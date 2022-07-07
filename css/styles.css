@@ -1,0 +1,84 @@
+:root {
+    --color-gray: #C2D9E8;
+    --color-blue: #60B2F0;
+    --color-green: #027D8D;
+    --color-red: #F25D50;
+    --color-orange: #FFA652;
+    --color-white : #fff;
+    --color-black: #000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.bg-blue {
+    background: var(--color-blue);
+}
+.bg-gray {
+    background: var(--color-gray);
+}
+.bg-green {
+    background: var(--color-green);
+}
+.bg-red {
+    background: var(--color-red);
+}
+.bg-orange {
+    background: var(--color-orange);
+}
+
+
+.color-white {
+    color: var(--color-white);
+}
+.color-black {
+    color: var(--color-black);
+}
+.color-blue {
+    color: var(--color-blue);
+}
+.color-gray {
+    color: var(--color-gray);
+}
+.color-green {
+    color: var(--color-green);
+}
+.color-red {
+    color: var(--color-red);
+}
+.color-orange {
+    color: var(--color-orange);
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+}
+.flex-col {
+    flex-direction: column;
+}
+.align-items-center {
+    align-items: center;
+}
+
+body {
+    background-color: var(--color-gray);
+}
+
+.main-header {
+    height: 4rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-black)
+}
+
+.main-header .entregable {
+    text-align: center;
+    color: var(--color-black);   
+}
