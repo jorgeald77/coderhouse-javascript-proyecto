@@ -1,6 +1,6 @@
-console.log("CODERHOUSE - Entregable 03: Incorporar Arrays")
+console.log("CODERHOUSE - Entregable 04: Primera entrega del proyecto final")
 
-// Definir variables y array de datos
+// Variables necesarias
 const generos = ['acción', 'comedia', 'suspenso', 'terror']
 const peliculas = [
     {cod: 'A0', titulo: 'Top Gun: Maverick', genero: 'acción'},
@@ -23,65 +23,97 @@ const peliculas = [
     {cod: 'T2', titulo: 'El páramo', genero: 'terror'},
     {cod: 'T3', titulo: 'Black phone', genero: 'terror'},
 ]
+let menuGeneros = ''
 let peliculasFiltradas = []
-const mis_votos = []
+let menuPeliculas = ''
 let app = true
 
 
-// Construir menu géneros a partir de recorrer el array generos:
-let menuGeneros = ""
-generos.forEach(crearMenuGeneros)
+// Definición de clase
+class Usuario {
+    constructor(nombre) {
+        if (nombre.length > 0)
+            this.nombre = nombre.toUpperCase()
+        else {
+            this.nombre = 'ANÓNIMO'
+        }
+        this.votos = []
+    }
 
-function crearMenuGeneros(value, index, array) {
+    //  Contar los votos del usuarios
+    contarVotos() {
+        return this.votos.length
+    }
+
+    // Agregar la pelicula por la que el usuario voto, no permitir duplicados
+    agregarVoto(peli) {
+        if(this.votos.some((el) => el.cod == peli.cod) == false)
+            this.votos.push(peli)
+    }
+}
+
+
+
+// Construir menu géneros a partir de recorrer el array "generos" para mostrarlo en el Prompt.
+generos.forEach( (value, index, array) => {
     menuGeneros += index + ".- " + value + "\n"
-}
+})
 
 
-// Construir menu de peliculas segun el género elegido.
-let menuPeliculas = ""
 
+// Función para construir menu de peliculas segun el género elegido.
 function filtrarPeliculasPorGenero(generoElegido) {
+    // Dejar variables en blanco o vacias para construir un menu nuevo.
     peliculasFiltradas = []
-    menuPeliculas = ""
+    menuPeliculas = ''
 
-    for (let pelicula of peliculas) {
-        if (pelicula.genero === generoElegido)
-            peliculasFiltradas.push(pelicula)
-    }
+    // Hacer uso del filter() para obtener las películas segun el genereElegido
+    peliculasFiltradas = peliculas.filter((el) => el.genero.includes(generoElegido))
 
-    peliculasFiltradas.forEach(crearMenuPeliculas)
-
-    function crearMenuPeliculas(value, index, array) {
+    // Construir menu películas a partir de recorrer el array "peliculasFiltradas" para mostrarlo en el Prompt.
+    peliculasFiltradas.forEach( (value, index, array) => {
         menuPeliculas += index + ".- " + value.titulo + "\n"
-    }
+    })
 }
 
+
+
+// Finalizar para finalizar el programa y mostrar resultado de los votos en el Prompt.
 function finalizar() {
+    // Variable para detener el ciclo "Do While"
     app = false
-    console.log("Cantidad de votos: " + mis_votos.length)
+
+    // Mostrar información el Console.log
+    console.log("Cantidad de votos: " + usuario.contarVotos())
     console.log("Gracias por jugar...")
 
-    let msj = nombre + ", gracias por jugar.\n"
+    let msj = usuario.nombre + ", gracias por jugar.\n"
 
-    if (mis_votos.length > 0) {
+    // Condición para saber si el usuario ha votado por alguna película.
+    if (usuario.contarVotos() > 0) {
         msj += "\nVotaste por: \n"
 
-        mis_votos.forEach(voto => {
+        usuario.votos.forEach(voto => {
             msj += "Título: " + voto.titulo + "\n"
         })
     }
 
+    // Mostrar mensaje por Alert.
     alert(msj)
 }
 
 
-// Obtener el nombre del usuario
-const nombre = prompt('\n' + "Cuál es tu nombre?").toUpperCase()
-console.log("Bienvenido " + nombre)
 
+// Crear objeto Usuario.
+const usuario = new Usuario(prompt("Cuál es tu nombre?"))
+console.log("Bienvenido " + usuario.nombre)
+
+
+
+// Ciclo para ejecutar la aplicacion.
 do {
     // Mostrar menu de géneros de péliculas
-    let genero = parseInt(prompt('\n' + nombre + ', elige el número del género que deseas listar? \n\n' + menuGeneros + '\n Boton cancelar para salir.'))
+    let genero = parseInt(prompt('\n' + usuario.nombre + ', elige el número del género que deseas listar? \n\n' + menuGeneros + '\n Boton cancelar para salir.'))
 
     if (isNaN(genero)) {
         finalizar()
@@ -95,11 +127,11 @@ do {
             console.log(menuPeliculas)
 
             // Mostrar menú de películas
-            let elegiPelicula = parseInt(prompt('\n' + nombre + ', ¿Elige el número de película tu favorita?\n\n' + menuPeliculas))
+            let elegiPelicula = parseInt(prompt('\n' + usuario.nombre + ', ¿Elige el número de película tu favorita?\n\n' + menuPeliculas))
 
             // Validacion
             if (0 <= elegiPelicula && elegiPelicula < peliculasFiltradas.length) {
-                mis_votos.push(peliculasFiltradas[elegiPelicula])
+                usuario.agregarVoto(peliculasFiltradas[elegiPelicula])
                 console.log("Votaste por: " + peliculasFiltradas[elegiPelicula].titulo)
             }
         } else {
