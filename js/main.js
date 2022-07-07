@@ -1,160 +1,110 @@
-console.log("CODERHOUSE - Entregable 02: Simulador interactivo")
+console.log("CODERHOUSE - Entregable 03: Incorporar Arrays")
 
-const nombre = prompt("Cuál es tu nombre?").toUpperCase()
-console.log("Bienvenido " + nombre)
+// Definir variables y array de datos
+const generos = ['acción', 'comedia', 'suspenso', 'terror']
+const peliculas = [
+    {cod: 'A0', titulo: 'Top Gun: Maverick', genero: 'acción'},
+    {cod: 'A1', titulo: 'Interceptor', genero: 'acción'},
+    {cod: 'A2', titulo: 'Prisioneros de Ghostland', genero: 'acción'},
+    {cod: 'A3', titulo: 'Agentes 355', genero: 'acción'},
 
-function menuGenero() {
-    return "1 - Acción\n" +
-        "2 - Comedia\n" +
-        "3 - Suspenso\n" +
-        "4 - Terror\n" +
-        "5 - Terminar votación\n"
-}
+    {cod: 'C0', titulo: 'Cásate conmigo', genero: 'comedia'},
+    {cod: 'C1', titulo: 'Agentes 355', genero: 'comedia'},
+    {cod: 'C2', titulo: 'Jackass forever', genero: 'comedia'},
+    {cod: 'C3', titulo: 'I want you back', genero: 'comedia'},
 
-function menuAccion() {
-    return "1 - Top Gun: Maverick\n" +
-        "2 - Interceptor\n" +
-        "3 - Prisioneros de Ghostland\n" +
-        "4 - Agentes 355\n"
-}
+    {cod: 'S0', titulo: 'Pienso en el final', genero: 'suspenso'},
+    {cod: 'S1', titulo: 'Hannibal', genero: 'suspenso'},
+    {cod: 'S2', titulo: 'El juego', genero: 'suspenso'},
+    {cod: 'S3', titulo: 'La cabeza de la araña', genero: 'suspenso'},
 
-function menuSuspenso() {
-    return "1 - Pienso en el final\n" +
-        "2 - Hannibal\n" +
-        "3 - El juego\n" +
-        "4 - La cabeza de la araña\n"
-}
-
-function menuTerror() {
-    return "1 - La abuela\n" +
-        "2 - Scream\n" +
-        "3 - El páramo\n" +
-        "4 - Black phone\n"
-}
-
-function menuComedia() {
-    return "1 - Cásate conmigo\n" +
-        "2 - Jackass forever\n" +
-        "3 - I want you back\n" +
-        "4 - Red\n"
-}
-
-function votoAccion(pelicula) {
-    let voto
-    switch (pelicula) {
-        case '1':
-            voto = 'Top Gun: Maverick\n'
-            break
-        case '2':
-            voto = 'Interceptor\n'
-            break
-        case '3':
-            voto = 'Prisioneros de Ghostland\n'
-            break
-        case '4':
-            voto = 'Agentes 355\n'
-            break
-    }
-    return voto
-}
-
-function votoSuspenso(pelicula) {
-    let voto
-    switch (pelicula) {
-        case '1':
-            voto = 'Pienso en el final\n'
-            break
-        case '2':
-            voto = 'Hannibal\n'
-            break
-        case '3':
-            voto = 'El juego\n'
-            break
-        case '4':
-            voto = 'La cabeza de la araña\n'
-            break
-    }
-    return voto
-}
-
-function votoTerror(pelicula) {
-    let voto
-    switch (pelicula) {
-        case '1':
-            voto = 'La abuela\n'
-            break
-        case '2':
-            voto = 'Scream\n'
-            break
-        case '3':
-            voto = 'El páramo\n'
-            break
-        case '4':
-            voto = 'Black phone\n'
-            break
-    }
-    return voto
-}
-
-function votoComedia(pelicula) {
-    let voto
-    switch (pelicula) {
-        case '1':
-            voto = 'Cásate conmigo\n'
-            break
-        case '2':
-            voto = 'Jackass forever\n'
-            break
-        case '3':
-            voto = 'I want you back\n'
-            break
-        case '4':
-            voto = 'Red\n'
-            break
-    }
-    return voto
-}
-
-let mis_votos = ""
-
+    {cod: 'T0', titulo: 'La abuela', genero: 'terror'},
+    {cod: 'T1', titulo: 'Scream', genero: 'terror'},
+    {cod: 'T2', titulo: 'El páramo', genero: 'terror'},
+    {cod: 'T3', titulo: 'Black phone', genero: 'terror'},
+]
+let peliculasFiltradas = []
+const mis_votos = []
 let app = true
 
-do {
-    let genero = prompt(nombre + ', elije el número del género que deseas listar? \n\n' + menuGenero())
 
-    switch (genero) {
-        case '1':
-            voto = prompt(nombre + '¿Cuál es tu favorita?\n\n' + menuAccion())
-            if (voto != '')
-                mis_votos += votoAccion(voto)
-            break
-        case '2':
-            voto = prompt(nombre + '¿Cuál es tu favorita?\n\n' + menuSuspenso())
-            if (voto != '')
-                mis_votos += votoSuspenso(voto)
-            break
-        case '3':
-            voto = prompt(nombre + '¿Cuál es tu favorita?\n\n' + menuTerror())
-            if (voto != '')
-                mis_votos += votoTerror(voto)
-            break
-        case '4':
-            voto = prompt(nombre + '¿Cuál es tu favorita?\n\n' + menuComedia())
-            if (voto != '')
-                mis_votos += votoComedia(voto)
-            break
-        case '5':
-            app = false
-            break
-        default:
-            app = false
-            alert('Hemos terminado, vuelve pronto.')
-            break
-    }
-} while (app)
+// Construir menu géneros a partir de recorrer el array generos:
+let menuGeneros = ""
+generos.forEach(crearMenuGeneros)
 
-if (mis_votos.length > 0) {
-    alert("Tus votos son para: \n\n" + mis_votos)
-} else {
-    alert("Esperamos que la próxima votes por una película")
+function crearMenuGeneros(value, index, array) {
+    menuGeneros += index + ".- " + value + "\n"
 }
+
+
+// Construir menu de peliculas segun el género elegido.
+let menuPeliculas = ""
+
+function filtrarPeliculasPorGenero(generoElegido) {
+    peliculasFiltradas = []
+    menuPeliculas = ""
+
+    for (let pelicula of peliculas) {
+        if (pelicula.genero === generoElegido)
+            peliculasFiltradas.push(pelicula)
+    }
+
+    peliculasFiltradas.forEach(crearMenuPeliculas)
+
+    function crearMenuPeliculas(value, index, array) {
+        menuPeliculas += index + ".- " + value.titulo + "\n"
+    }
+}
+
+function finalizar() {
+    app = false
+    console.log("Cantidad de votos: " + mis_votos.length)
+    console.log("Gracias por jugar...")
+
+    let msj = nombre + ", gracias por jugar.\n"
+
+    if (mis_votos.length > 0) {
+        msj += "\nVotaste por: \n"
+
+        mis_votos.forEach(voto => {
+            msj += "Título: " + voto.titulo + "\n"
+        })
+    }
+
+    alert(msj)
+}
+
+
+// Obtener el nombre del usuario
+const nombre = prompt('\n' + "Cuál es tu nombre?").toUpperCase()
+console.log("Bienvenido " + nombre)
+
+do {
+    // Mostrar menu de géneros de péliculas
+    let genero = parseInt(prompt('\n' + nombre + ', elige el número del género que deseas listar? \n\n' + menuGeneros + '\n Boton cancelar para salir.'))
+
+    if (isNaN(genero)) {
+        finalizar()
+    } else {
+        // Validación
+        if (0 <= genero && genero < generos.length) {
+            console.log("Elegiste: " + generos[genero])
+
+            // Filtrar peliculas
+            filtrarPeliculasPorGenero(generos[genero])
+            console.log(menuPeliculas)
+
+            // Mostrar menú de películas
+            let elegiPelicula = parseInt(prompt('\n' + nombre + ', ¿Elige el número de película tu favorita?\n\n' + menuPeliculas))
+
+            // Validacion
+            if (0 <= elegiPelicula && elegiPelicula < peliculasFiltradas.length) {
+                mis_votos.push(peliculasFiltradas[elegiPelicula])
+                console.log("Votaste por: " + peliculasFiltradas[elegiPelicula].titulo)
+            }
+        } else {
+            console.log("Elige una opción dispobible...")
+        }
+    }
+
+} while (app)
