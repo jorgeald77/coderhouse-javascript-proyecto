@@ -1,4 +1,9 @@
-console.log("CODERHOUSE - Entregable 04: Primera entrega del proyecto final")
+console.log("CODERHOUSE - Entregable 05: Interactuar con HTML")
+
+// Elementos del DOM
+const tagBievendia = document.getElementById('tag-bienvenido');
+const tagMisVotos = document.getElementById('tag-misvotos');
+const tagItemsVotos = document.getElementById('tag-items-votos')
 
 // Variables necesarias
 const generos = ['acción', 'comedia', 'suspenso', 'terror']
@@ -87,27 +92,21 @@ function finalizar() {
     console.log("Cantidad de votos: " + usuario.contarVotos())
     console.log("Gracias por jugar...")
 
-    let msj = usuario.nombre + ", gracias por jugar.\n"
-
     // Condición para saber si el usuario ha votado por alguna película.
     if (usuario.contarVotos() > 0) {
-        msj += "\nVotaste por: \n"
+        tagMisVotos.classList.remove('hidden')
 
         usuario.votos.forEach(voto => {
-            msj += "Título: " + voto.titulo + "\n"
+            tagItemsVotos.innerHTML += "<li class='ml-1'><p>"+ voto.titulo +"</p></li>"
         })
     }
-
-    // Mostrar mensaje por Alert.
-    alert(msj)
 }
-
 
 
 // Crear objeto Usuario.
 const usuario = new Usuario(prompt("Cuál es tu nombre?"))
 console.log("Bienvenido " + usuario.nombre)
-
+tagBievendia.innerHTML = 'Bienvenido <strong>' + usuario.nombre + '</strong>'
 
 
 // Ciclo para ejecutar la aplicacion.

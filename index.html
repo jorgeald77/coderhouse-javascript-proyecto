@@ -5,24 +5,47 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="author" content="Jorge Guzmán Aguilar">
-    <meta about="Simulador interactivo - Primera entrega del proyecto final">
-    <title>JGA | CODERHOUSE Javascript</title>
+    <meta about="Simulador interactivo">
+    <title>JGA | Simulador interactivo</title>
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-<header>
-    <h3>Javascript</h3>
-</header>
+    <!-- Main header -->
+    <header class="main-header bg-blue">
+        <div>
+            <h3>CODERHOUSE Javascript</h3>
+        </div>
 
-<main>
-    <h4>Desafío</h4>
-    <h5>Simulador interactivo | Primera entrega "Proyecto final"</h5>
+        <div class="entregable">
+            <p><strong>Entregable 05</strong></p>
+            <p>Interactuar con HTML</p>
+        </div>
+    </header>
 
-    <p><strong>Consigna:</strong> Métodos de búsqueda y filtrado sobre el Array.</p>
+    <!-- Main content -->
+    <main class="container mt-1">
+        
+        <p id="tag-bienvenido"></p>
 
-    <p><strong>Simulador interactivo:</strong> Votar por las mejores películas</p>
-</main>
+        <div id="tag-misvotos" class="mt-1 hidden">
+            <h5>Votaste por:</h5>
+            <ul id="tag-items-votos"></ul>
+        </div>
 
-<script src="./js/main.js"></script>
+    </main>
+
+    <!--Main footer -->
+    <footer class="main-footer">
+        <h4 class="entregable">DESAFÍO</h4>
+
+        <p><strong>Consigna:</strong> Trasladar al proyecto integrado el concepto de objetos.</p>
+
+        <ul class="ml-1">
+            <li>Crear elementos manipulando el DOM a partir de la información de los objetos.</li>
+            <li>Modificar etiquetas existentes en función del resultado de operaciones.</li>
+        </ul>
+    </footer>
+
+    <script src="./js/main.js"></script>
 </body>
 </html>
