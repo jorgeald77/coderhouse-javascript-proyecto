@@ -63,9 +63,17 @@
     align-items: center;
 }
 
+
+.ml-1{
+    margin-left: 2rem;
+}
+
 body {
     background-color: var(--color-gray);
+    font-family: Arial, sans-serif;
 }
+
+
 
 .main-header {
     height: 4rem;
@@ -81,4 +89,16 @@ body {
 .main-header .entregable {
     text-align: center;
     color: var(--color-black);   
+}
+
+.main-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+    background-color: var(--color-green);
+    color: var(--color-gray);
+    padding: 2rem;
+
 }
