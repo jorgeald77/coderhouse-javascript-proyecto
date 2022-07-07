@@ -7,10 +7,10 @@
     --color-white : #fff;
     --color-black: #000;
 }
-
 * {
     margin: 0;
     padding: 0;
+    list-style-type: none;
 }
 
 .bg-blue {
@@ -64,16 +64,28 @@
 }
 
 
-.ml-1{
+.ml-1 {
     margin-left: 2rem;
+}
+.mt-1 {
+    margin-top: 2rem;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90%;
+    min-height: 100px;
 }
 
 body {
     background-color: var(--color-gray);
     font-family: Arial, sans-serif;
 }
-
-
 
 .main-header {
     height: 4rem;
@@ -100,5 +112,8 @@ body {
     background-color: var(--color-green);
     color: var(--color-gray);
     padding: 2rem;
+}
 
+li > p {
+    padding: 3px;
 }

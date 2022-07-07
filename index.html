@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-    
     <!-- Main header -->
     <header class="main-header bg-blue">
         <div>
@@ -24,8 +23,15 @@
     </header>
 
     <!-- Main content -->
-    <main>
+    <main class="container mt-1">
         
+        <p id="tag-bienvenido"></p>
+
+        <div id="tag-misvotos" class="mt-1 hidden">
+            <h5>Votaste por:</h5>
+            <ul id="tag-items-votos"></ul>
+        </div>
+
     </main>
 
     <!--Main footer -->
@@ -40,6 +46,6 @@
         </ul>
     </footer>
 
-    <!-- <script src="./js/main.js"></script> -->
+    <script src="./js/main.js"></script>
 </body>
 </html>
