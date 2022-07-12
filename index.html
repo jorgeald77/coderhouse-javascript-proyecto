@@ -31,7 +31,7 @@
         </div>
         
         <div class="flex">
-            <div class="p-1 border-danger">
+            <div class="p-1">
                 <!-- Géneros -->
                 <div>
                     <h5 id="">Géneros</h5>
@@ -43,27 +43,19 @@
                 <!-- Películas -->
                 <div class="mt-1">
                     <h5>Películas</h5>
-                    <div id="peliculas" class="flex flex-col" style="gap: 10px;">
-                        <!--
-                        <button role="button" class="btn-pelicula" aria-cod="C01">Película 01</button>
-                        <button role="button" class="btn-pelicula" aria-cod="C01">Película 01</button>
-                        -->
-                    </div>
+                    <div id="peliculas" class="flex flex-col" style="gap: 10px;"></div>
                 </div>
-
-
             </div>
 
-            <div></div>
+            <div class="p-1">
+                <h5>Votos registrados: <span id="numvotos">0</span></h5>
 
-            <div class="p-1 border-danger">Información de eventos</div>
+                <div id="tag-misvotos" class="mt-1">
+                    <h5>Votaste por: <span></span></h6>
+                    <ul id="tag-items-votos"></ul>
+                </div>
+            </div>
         </div>
-
-        <div id="tag-misvotos" class="mt-1 hidden">
-            <h5>Votaste por:</h5>
-            <ul id="tag-items-votos"></ul>
-        </div>
-
     </main>
 
     <!--Main footer -->

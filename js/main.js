@@ -7,6 +7,7 @@ const tagItemsVotos = document.getElementById('tag-items-votos')
 
 const elementGeneros = document.getElementById('generos')
 const elementPeliculas = document.getElementById('peliculas')
+const elementNumVotos = document.getElementById('numvotos')
 
 // Variables necesarias
 const generos = ['acción', 'comedia', 'suspenso', 'terror']
@@ -43,6 +44,7 @@ class Usuario {
         else {
             this.nombre = 'ANÓNIMO'
         }
+
         this.votos = []
     }
 
@@ -79,27 +81,6 @@ function filtrarPeliculasPorGenero(generoElegido) {
 }
 
 
-
-// Finalizar para finalizar el programa y mostrar resultado de los votos en el Prompt.
-function finalizar() {
-    // Variable para detener el ciclo "Do While"
-    app = false
-
-    // Mostrar información el Console.log
-    console.log("Cantidad de votos: " + usuario.contarVotos())
-    console.log("Gracias por jugar...")
-
-    // Condición para saber si el usuario ha votado por alguna película.
-    if (usuario.contarVotos() > 0) {
-        tagMisVotos.classList.remove('hidden')
-
-        usuario.votos.forEach(voto => {
-            tagItemsVotos.innerHTML += "<li class='ml-1'><p>"+ voto.titulo +"</p></li>"
-        })
-    }
-}
-
-
 // Crear objeto Usuario.
 const usuario = new Usuario(prompt("Cuál es tu nombre?"))
 console.log("Bienvenido " + usuario.nombre)
@@ -119,41 +100,14 @@ elementGeneros.addEventListener('change', (e) => {
 // Evento cuando hace click en un boton película para registrar el voto
 elementPeliculas.addEventListener("click", (e) => {
     console.log(e.target.getAttribute('aria-cod'))
-    alert("Votaste por: " + e.target.getAttribute('aria-cod'))
+    usuario.agregarVoto(peliculasFiltradas.find((el) => el.cod == e.target.getAttribute('aria-cod')))
+    
+    // Contar elemento y manipular con el DOM
+    elementNumVotos.innerText = usuario.contarVotos()
+
+    // Mostrar Títulos de peliculas elegidas
+    tagItemsVotos.innerHTML = ""
+    usuario.votos.forEach(voto => {
+        tagItemsVotos.innerHTML += "<li class='ml-1'><p>"+ voto.titulo +"</p></li>"
+    })
 })
-
-
-
-
-/*
-// Ciclo para ejecutar la aplicacion.
-do {
-    // Mostrar menu de géneros de péliculas
-    let genero = parseInt(prompt('\n' + usuario.nombre + ', elige el número del género que deseas listar? \n\n' + menuGeneros + '\n Boton cancelar para salir.'))
-
-    if (isNaN(genero)) {
-        finalizar()
-    } else {
-        // Validación
-        if (0 <= genero && genero < generos.length) {
-            console.log("Elegiste: " + generos[genero])
-
-            // Filtrar peliculas
-            filtrarPeliculasPorGenero(generos[genero])
-            console.log(menuPeliculas)
-
-            // Mostrar menú de películas
-            let elegiPelicula = parseInt(prompt('\n' + usuario.nombre + ', ¿Elige el número de película tu favorita?\n\n' + menuPeliculas))
-
-            // Validacion
-            if (0 <= elegiPelicula && elegiPelicula < peliculasFiltradas.length) {
-                usuario.agregarVoto(peliculasFiltradas[elegiPelicula])
-                console.log("Votaste por: " + peliculasFiltradas[elegiPelicula].titulo)
-            }
-        } else {
-            console.log("Elige una opción dispobible...")
-        }
-    }
-
-} while (app)
-*/
