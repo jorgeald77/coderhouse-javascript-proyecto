@@ -1,9 +1,12 @@
-console.log("CODERHOUSE - Entregable 05: Interactuar con HTML")
+console.log("CODERHOUSE - Entregable 06: Incorporar Eventos")
 
 // Elementos del DOM
-const tagBievendia = document.getElementById('tag-bienvenido');
-const tagMisVotos = document.getElementById('tag-misvotos');
+const tagBievendia = document.getElementById('tag-bienvenido')
+const tagMisVotos = document.getElementById('tag-misvotos')
 const tagItemsVotos = document.getElementById('tag-items-votos')
+
+const elementGeneros = document.getElementById('generos')
+const elementPeliculas = document.getElementById('peliculas')
 
 // Variables necesarias
 const generos = ['acción', 'comedia', 'suspenso', 'terror']
@@ -28,10 +31,8 @@ const peliculas = [
     {cod: 'T2', titulo: 'El páramo', genero: 'terror'},
     {cod: 'T3', titulo: 'Black phone', genero: 'terror'},
 ]
-let menuGeneros = ''
 let peliculasFiltradas = []
-let menuPeliculas = ''
-let app = true
+
 
 
 // Definición de clase
@@ -57,27 +58,23 @@ class Usuario {
     }
 }
 
-
-
-// Construir menu géneros a partir de recorrer el array "generos" para mostrarlo en el Prompt.
+// Inicializar elemento Select con los géneros disponibles
 generos.forEach( (value, index, array) => {
-    menuGeneros += index + ".- " + value + "\n"
+    elementGeneros.innerHTML += `<option value="${value}"><span class="uppercase">${value}</span></option>`
 })
-
 
 
 // Función para construir menu de peliculas segun el género elegido.
 function filtrarPeliculasPorGenero(generoElegido) {
     // Dejar variables en blanco o vacias para construir un menu nuevo.
     peliculasFiltradas = []
-    menuPeliculas = ''
 
     // Hacer uso del filter() para obtener las películas segun el genereElegido
     peliculasFiltradas = peliculas.filter((el) => el.genero.includes(generoElegido))
 
     // Construir menu películas a partir de recorrer el array "peliculasFiltradas" para mostrarlo en el Prompt.
     peliculasFiltradas.forEach( (value, index, array) => {
-        menuPeliculas += index + ".- " + value.titulo + "\n"
+        elementPeliculas.innerHTML += `<button role="button" class="btn-pelicula" aria-cod="${value.cod}">${value.titulo}</button>`
     })
 }
 
@@ -109,6 +106,26 @@ console.log("Bienvenido " + usuario.nombre)
 tagBievendia.innerHTML = 'Bienvenido <strong>' + usuario.nombre + '</strong>'
 
 
+// Evento cuando el elemeto Selecte cambia de opcion.
+elementGeneros.addEventListener('change', (e) => {
+    elementPeliculas.innerHTML = ''
+    if(e.target.value == '') {
+        alert("Por favor, seleciona un género de películas.")
+    } else {
+        filtrarPeliculasPorGenero(e.target.value)
+    }
+})
+
+// Evento cuando hace click en un boton película para registrar el voto
+elementPeliculas.addEventListener("click", (e) => {
+    console.log(e.target.getAttribute('aria-cod'))
+    alert("Votaste por: " + e.target.getAttribute('aria-cod'))
+})
+
+
+
+
+/*
 // Ciclo para ejecutar la aplicacion.
 do {
     // Mostrar menu de géneros de péliculas
@@ -139,3 +156,4 @@ do {
     }
 
 } while (app)
+*/
