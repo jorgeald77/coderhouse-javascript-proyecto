@@ -17,28 +17,52 @@
         </div>
 
         <div class="entregable">
-            <p><strong>Entregable 05</strong></p>
-            <p>Interactuar con HTML</p>
+            <p><strong>Entregable 06</strong></p>
+            <p>Incorporar Eventos</p>
         </div>
     </header>
 
     <!-- Main content -->
     <main class="container mt-1">
-        
-        <p id="tag-bienvenido"></p>
-
-        <div id="tag-misvotos" class="mt-1 hidden">
-            <h5>Votaste por:</h5>
-            <ul id="tag-items-votos"></ul>
+        <div>
+            <h3 id="tag-bienvenido"></h3>
+            <p>Te invitamos a realizar la votación de tus películas favoritas.</p>
+            <p>Selecciona el género de películas y posteriormente elige la película de tu preferencia, esto lo puede hacer repetidamente.</p>
         </div>
+        
+        <div class="flex">
+            <div class="p-1">
+                <!-- Géneros -->
+                <div>
+                    <h5 id="">Géneros</h5>
+                    <select name="generos" id="generos">
+                        <option value="">Elige un género de películas...</option>
+                    </select>
+                </div>
 
+                <!-- Películas -->
+                <div class="mt-1">
+                    <h5>Películas</h5>
+                    <div id="peliculas" class="flex flex-col" style="gap: 10px;"></div>
+                </div>
+            </div>
+
+            <div class="p-1">
+                <h5>Votos registrados: <span id="numvotos">0</span></h5>
+
+                <div id="tag-misvotos" class="mt-1">
+                    <h5>Votaste por: <span></span></h6>
+                    <ul id="tag-items-votos"></ul>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!--Main footer -->
     <footer class="main-footer">
         <h4 class="entregable">DESAFÍO</h4>
 
-        <p><strong>Consigna:</strong> Trasladar al proyecto integrado el concepto de objetos.</p>
+        <p><strong>Consigna:</strong> Asociar eventos que buscamos controlar sobre los elementos de la interfaz de nuestro simulador.</p>
 
         <ul class="ml-1">
             <li>Crear elementos manipulando el DOM a partir de la información de los objetos.</li>

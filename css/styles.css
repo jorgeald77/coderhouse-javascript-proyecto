@@ -64,11 +64,48 @@
 }
 
 
+.m-1 {
+    margin: 2rem;
+}
+
+.p-1 {
+    padding: 1rem;
+}
+
 .ml-1 {
     margin-left: 2rem;
 }
 .mt-1 {
     margin-top: 2rem;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+.capitalize {
+    text-transform: capitalize;
+}
+
+
+input[type=text] {
+    padding: 10px;
+    margin:10px 0;
+    width:100%;
+    border: 0;
+    border-radius:5px;
+  }
+
+select {
+    padding:10px;
+    margin:10px 0;
+    width: 100%;
+    border: 0;
+    border-radius:5px;
+}
+
+
+.border-danger {
+    border: 1px red solid;
 }
 
 .hidden {
@@ -108,7 +145,6 @@ body {
     left: 0;
     bottom: 0;
     width: 100%;
-
     background-color: var(--color-green);
     color: var(--color-gray);
     padding: 2rem;
@@ -116,4 +152,20 @@ body {
 
 li > p {
     padding: 3px;
+}
+
+.btn-pelicula {
+    border: none;
+    border-radius: 5px;
+    padding: 15px 32px;
+    background-color: wheat;
+    width: 100%;
+    cursor: pointer;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-pelicula:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 25px 0 rgba(0,0,0,0.19);
 }
