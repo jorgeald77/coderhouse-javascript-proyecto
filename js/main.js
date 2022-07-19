@@ -1,11 +1,16 @@
 console.log("CODERHOUSE - Entregable 07: 2a Entrega del Proyecto Fina")
 
+// Storage
+// localStorage = setItem("votos")
+
 // Elementos del DOM
 const containerUsuario = document.getElementById('container-usuario')
 const formUsuario = document.getElementById('form-usuario')
+
 const containerApp = document.getElementById('container-app')
 
 const tagBievendia = document.getElementById('tag-bienvenido')
+
 const tagMisVotos = document.getElementById('tag-misvotos')
 const tagItemsVotos = document.getElementById('tag-items-votos')
 
@@ -37,7 +42,6 @@ const peliculas = [
     {cod: 'T3', titulo: 'Black phone', genero: 'terror'},
 ]
 let peliculasFiltradas = []
-
 
 
 // Definición de clase
@@ -89,7 +93,7 @@ function filtrarPeliculasPorGenero(generoElegido) {
 
 /*
 1.- Solicitar nombre del usuario con Formulario para crear objeto usuario
-2.-
+2.- Mostrar lista de categorias
 3.-
 4.-
 */
@@ -100,14 +104,11 @@ function filtrarPeliculasPorGenero(generoElegido) {
 //const usuario = new Usuario(prompt("Cuál es tu nombre?"))
 formUsuario.addEventListener('submit', (e) => {
     e.preventDefault()
-    new Usuario(document.getElementById('username').value)
-    // Ocultar el formulario y aparecen películas para votación
-    containerUsuario.style.display = 'none'
-    containerApp.style.display =  'block'
-
+    const usuario = new Usuario(document.getElementById('username').value)
+    containerUsuario.classList.add('hidden')
+    containerApp.classList.remove('hidden')
+    tagBievendia.innerText = usuario.nombre
 })
-
-tagBievendia.innerHTML = 'Bienvenido <strong>' + usuario.nombre + '</strong>'
 
 
 // Evento cuando el elemeto Selecte cambia de opcion.

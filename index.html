@@ -10,65 +10,67 @@
     <meta name="author" content="Jorge Guzmán Aguilar" />
     <meta about="Simulador interactivo" />
     <title>JGA | Simulador interactivo</title>
-    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/tailwind.css" />
   </head>
   <body>
     <!-- Main header -->
-    <header class="main-header bg-blue">
-      <div>
-        <h3>CODERHOUSE Javascript</h3>
-      </div>
+    <header
+      id="header"
+      class="px-8 flex justify-between items-center bg-appblue"
+    >
+      <h3 class="text-2xl font-extrabold tracking-wide">
+        CODERHOUSE Javascript
+      </h3>
 
-      <div class="entregable">
-        <p><strong>Entregable 07</strong></p>
+      <div class="text-center">
+        <h5 class="font-bold tracking-wide">Entregable 07</h5>
         <p>2a Entrega - Proyecto Final</p>
       </div>
     </header>
 
+    <aside id="aside" class="p-2">
+        <h3 class="text-center font-bold min-w-min">Bienvenido<br><span id="tag-bienvenido" class="tracking-wide"></span></h3>
+    </aside>
+
     <!-- Main content -->
-    <main class="container mt-1" style="width: 24rem">
-      <div id="container-usuario">
-        <div style="margin-bottom: 2rem">
-          <h3 style="text-align: center; margin: 1rem">Bienvenido</h3>
-          <p style="font-size: small; text-align: center">
-            Votación de tus películas favoritas
-          </p>
+    <main id="content">
+      <div id="container-usuario" class="text-center">
+        <div class="my-8">
+          <p class="text-sm">Votación de tus películas favoritas</p>
         </div>
 
-        <form id="form-usuario">
-          <div>
-            <label for="username">Nombre</label>
-            <input
-              type="text"
-              id="username"
-              placeholder="Escribe tu nombre"
-              minlength="3"
-              required
-            />
-          </div>
+        <div class="max-w-xs mx-auto">
+          <form id="form-usuario">
+            <div>
+              <label
+                for="username"
+                class="text-left block font-medium text-sm text-gray-700 truncate"
+                >Nombre</label
+              >
+              <input
+                type="text"
+                id="username"
+                class="block mt-1 w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-gray-900 focus:border-gray-900"
+                placeholder="Escribe tu nombre"
+                minlength="3"
+                required
+              />
+            </div>
 
-          <div style="text-align: center">
-            <button
-              style="padding: 0.5rem 1rem; background-color: aqua"
-              type="sumbit"
-            >
-              Entrar
-            </button>
-          </div>
-        </form>
+            <div class="mt-4">
+              <button
+                style="padding: 0.5rem 1rem; background-color: aqua"
+                type="sumbit"
+              >
+                Entrar
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
 
-      <div id="container-app" style="display: none">
-        <div>
-          <h3 id="tag-bienvenido"></h3>
-          <p>Te invitamos a realizar la votación de tus películas favoritas.</p>
-          <p>
-            Selecciona el género de películas y posteriormente elige la película
-            de tu preferencia, esto lo puede hacer repetidamente.
-          </p>
-        </div>
-
-        <div class="flex" style="display: none">
+      <div id="container-app" class="hidden">
+        <div class="flex">
           <div class="p-1">
             <!-- Géneros -->
             <div>
@@ -84,22 +86,23 @@
               <div id="peliculas" class="flex flex-col" style="gap: 10px"></div>
             </div>
           </div>
-
-          <div class="p-1">
-            <h5>Votos registrados: <span id="numvotos">0</span></h5>
-
-            <div id="tag-misvotos" class="mt-1">
-              <h5>Votaste por: <span></span></h5>
-              <ul id="tag-items-votos"></ul>
-            </div>
-          </div>
         </div>
       </div>
     </main>
 
+    <aside id="aside-right" class="p-2">
+        <div>
+            <h5  class="text-center font-bold uppercase">Votos: <span id="numvotos">0</span></h5>
+
+            <div id="tag-misvotos" class="mt-4">
+              <ul id="tag-items-votos"></ul>
+            </div>
+          </div>
+    </aside>
+
     <!--Main footer -->
-    <footer class="main-footer">
-      <h4 class="entregable">DESAFÍO</h4>
+    <footer id="footer" class="p-4 bg-appgreen text-appgray">
+      <h5 class="font-bold tracking-wide">DESAFÍO</h5>
 
       <p>
         <strong>Consigna:</strong> Agregar y entregar uso de JSON, Storage, DOM
