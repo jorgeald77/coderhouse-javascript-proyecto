@@ -1,76 +1,121 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="author" content="Jorge Guzmán Aguilar">
-    <meta about="Simulador interactivo">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="author" content="Jorge Guzmán Aguilar" />
+    <meta about="Simulador interactivo" />
     <title>JGA | Simulador interactivo</title>
-    <link rel="stylesheet" href="./css/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
     <!-- Main header -->
     <header class="main-header bg-blue">
-        <div>
-            <h3>CODERHOUSE Javascript</h3>
-        </div>
+      <div>
+        <h3>CODERHOUSE Javascript</h3>
+      </div>
 
-        <div class="entregable">
-            <p><strong>Entregable 07</strong></p>
-            <p>2a Entrega - Proyecto Final</p>
-        </div>
+      <div class="entregable">
+        <p><strong>Entregable 07</strong></p>
+        <p>2a Entrega - Proyecto Final</p>
+      </div>
     </header>
 
     <!-- Main content -->
-    <main class="container mt-1">
+    <main class="container mt-1" style="width: 24rem">
+      <div id="container-usuario">
+        <div style="margin-bottom: 2rem">
+          <h3 style="text-align: center; margin: 1rem">Bienvenido</h3>
+          <p style="font-size: small; text-align: center">
+            Votación de tus películas favoritas
+          </p>
+        </div>
+
+        <form id="form-usuario">
+          <div>
+            <label for="username">Nombre</label>
+            <input
+              type="text"
+              id="username"
+              placeholder="Escribe tu nombre"
+              minlength="3"
+              required
+            />
+          </div>
+
+          <div style="text-align: center">
+            <button
+              style="padding: 0.5rem 1rem; background-color: aqua"
+              type="sumbit"
+            >
+              Entrar
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div id="container-app" style="display: none">
         <div>
-            <h3 id="tag-bienvenido"></h3>
-            <p>Te invitamos a realizar la votación de tus películas favoritas.</p>
-            <p>Selecciona el género de películas y posteriormente elige la película de tu preferencia, esto lo puede hacer repetidamente.</p>
+          <h3 id="tag-bienvenido"></h3>
+          <p>Te invitamos a realizar la votación de tus películas favoritas.</p>
+          <p>
+            Selecciona el género de películas y posteriormente elige la película
+            de tu preferencia, esto lo puede hacer repetidamente.
+          </p>
         </div>
-        
-        <div class="flex">
-            <div class="p-1">
-                <!-- Géneros -->
-                <div>
-                    <h5 id="">Géneros</h5>
-                    <select name="generos" id="generos">
-                        <option value="">Elige un género de películas...</option>
-                    </select>
-                </div>
 
-                <!-- Películas -->
-                <div class="mt-1">
-                    <h5>Películas</h5>
-                    <div id="peliculas" class="flex flex-col" style="gap: 10px;"></div>
-                </div>
+        <div class="flex" style="display: none">
+          <div class="p-1">
+            <!-- Géneros -->
+            <div>
+              <h5 id="">Géneros</h5>
+              <select name="generos" id="generos">
+                <option value="">Elige un género de películas...</option>
+              </select>
             </div>
 
-            <div class="p-1">
-                <h5>Votos registrados: <span id="numvotos">0</span></h5>
-
-                <div id="tag-misvotos" class="mt-1">
-                    <h5>Votaste por: <span></span></h6>
-                    <ul id="tag-items-votos"></ul>
-                </div>
+            <!-- Películas -->
+            <div class="mt-1">
+              <h5>Películas</h5>
+              <div id="peliculas" class="flex flex-col" style="gap: 10px"></div>
             </div>
+          </div>
+
+          <div class="p-1">
+            <h5>Votos registrados: <span id="numvotos">0</span></h5>
+
+            <div id="tag-misvotos" class="mt-1">
+              <h5>Votaste por: <span></span></h5>
+              <ul id="tag-items-votos"></ul>
+            </div>
+          </div>
         </div>
+      </div>
     </main>
 
     <!--Main footer -->
     <footer class="main-footer">
-        <h4 class="entregable">DESAFÍO</h4>
+      <h4 class="entregable">DESAFÍO</h4>
 
-        <p><strong>Consigna:</strong> Agregar y entregar uso de JSON, Storage, DOM y Eventos del usuario</p>
+      <p>
+        <strong>Consigna:</strong> Agregar y entregar uso de JSON, Storage, DOM
+        y Eventos del usuario
+      </p>
 
-        <ul class="ml-1">
-            <li>Definir eventos a manejar y su función de respuesta.</li>
-            <li>Modificar en DOM, ya sea para definir elementos al cargar la página o para realizar salidas de un procesamiento.</li>
-            <li>Almacenar datos (clave-valor) en el Storage y recuperarlos</li>
-        </ul>
+      <ul class="ml-1">
+        <li>Definir eventos a manejar y su función de respuesta.</li>
+        <li>
+          Modificar en DOM, ya sea para definir elementos al cargar la página o
+          para realizar salidas de un procesamiento.
+        </li>
+        <li>Almacenar datos (clave-valor) en el Storage y recuperarlos</li>
+      </ul>
     </footer>
 
     <script src="./js/main.js"></script>
-</body>
+  </body>
 </html>

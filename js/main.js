@@ -1,6 +1,10 @@
-console.log("CODERHOUSE - Entregable 06: Incorporar Eventos")
+console.log("CODERHOUSE - Entregable 07: 2a Entrega del Proyecto Fina")
 
 // Elementos del DOM
+const containerUsuario = document.getElementById('container-usuario')
+const formUsuario = document.getElementById('form-usuario')
+const containerApp = document.getElementById('container-app')
+
 const tagBievendia = document.getElementById('tag-bienvenido')
 const tagMisVotos = document.getElementById('tag-misvotos')
 const tagItemsVotos = document.getElementById('tag-items-votos')
@@ -81,9 +85,28 @@ function filtrarPeliculasPorGenero(generoElegido) {
 }
 
 
+
+
+/*
+1.- Solicitar nombre del usuario con Formulario para crear objeto usuario
+2.-
+3.-
+4.-
+*/
+
+
+
 // Crear objeto Usuario.
-const usuario = new Usuario(prompt("Cuál es tu nombre?"))
-console.log("Bienvenido " + usuario.nombre)
+//const usuario = new Usuario(prompt("Cuál es tu nombre?"))
+formUsuario.addEventListener('submit', (e) => {
+    e.preventDefault()
+    new Usuario(document.getElementById('username').value)
+    // Ocultar el formulario y aparecen películas para votación
+    containerUsuario.style.display = 'none'
+    containerApp.style.display =  'block'
+
+})
+
 tagBievendia.innerHTML = 'Bienvenido <strong>' + usuario.nombre + '</strong>'
 
 
