@@ -29,7 +29,9 @@
     </header>
 
     <aside id="aside" class="p-2">
-        <h3 class="text-center font-bold min-w-min">Bienvenido<br><span id="tag-bienvenido" class="tracking-wide"></span></h3>
+      <h3 class="text-center font-bold min-w-min">
+        Bienvenido<br /><span id="tag-bienvenido" class="tracking-wide"></span>
+      </h3>
     </aside>
 
     <!-- Main content -->
@@ -70,34 +72,36 @@
       </div>
 
       <div id="container-app" class="hidden">
-        <div class="flex">
-          <div class="p-1">
-            <!-- Géneros -->
-            <div>
-              <h5 id="">Géneros</h5>
+        <div class="flex flex-col">
+          <!-- Géneros -->
+          <div class="h-20 p-2 border-b-2 w-full">
+            <div class="text-center">
+              <label for="generos">Género</label>
               <select name="generos" id="generos">
                 <option value="">Elige un género de películas...</option>
               </select>
             </div>
+          </div>
 
-            <!-- Películas -->
-            <div class="mt-1">
-              <h5>Películas</h5>
-              <div id="peliculas" class="flex flex-col" style="gap: 10px"></div>
-            </div>
+          <!-- Películas -->
+          <div class="mt-1">
+            <h5>Películas</h5>
+            <div id="peliculas" class="flex flex-col" style="gap: 10px"></div>
           </div>
         </div>
       </div>
     </main>
 
     <aside id="aside-right" class="p-2">
-        <div>
-            <h5  class="text-center font-bold uppercase">Votos: <span id="numvotos">0</span></h5>
+      <div>
+        <h5 class="text-center font-bold uppercase">
+          Votos: <span id="numvotos">0</span>
+        </h5>
 
-            <div id="tag-misvotos" class="mt-4">
-              <ul id="tag-items-votos"></ul>
-            </div>
-          </div>
+        <div id="tag-misvotos" class="mt-4">
+          <ul id="tag-items-votos"></ul>
+        </div>
+      </div>
     </aside>
 
     <!--Main footer -->

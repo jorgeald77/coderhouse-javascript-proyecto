@@ -99,12 +99,12 @@ function filtrarPeliculasPorGenero(generoElegido) {
 */
 
 
-
+const usuario = new Usuario('');
 // Crear objeto Usuario.
 //const usuario = new Usuario(prompt("Cuál es tu nombre?"))
 formUsuario.addEventListener('submit', (e) => {
     e.preventDefault()
-    const usuario = new Usuario(document.getElementById('username').value)
+    usuario.nombre = document.getElementById('username').value
     containerUsuario.classList.add('hidden')
     containerApp.classList.remove('hidden')
     tagBievendia.innerText = usuario.nombre
@@ -123,7 +123,7 @@ elementGeneros.addEventListener('change', (e) => {
 
 // Evento cuando hace click en un boton película para registrar el voto
 elementPeliculas.addEventListener("click", (e) => {
-    console.log(e.target.getAttribute('aria-cod'))
+    //console.log(e.target.getAttribute('aria-cod'))
     usuario.agregarVoto(peliculasFiltradas.find((el) => el.cod == e.target.getAttribute('aria-cod')))
     
     // Contar elemento y manipular con el DOM
@@ -132,6 +132,6 @@ elementPeliculas.addEventListener("click", (e) => {
     // Mostrar Títulos de peliculas elegidas
     tagItemsVotos.innerHTML = ""
     usuario.votos.forEach(voto => {
-        tagItemsVotos.innerHTML += "<li class='ml-1'><p>"+ voto.titulo +"</p></li>"
+        tagItemsVotos.innerHTML += "<li>"+ voto.titulo +"</li>"
     })
 })
