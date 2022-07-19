@@ -41,6 +41,7 @@ const peliculas = [
     {cod: 'T2', titulo: 'El páramo', genero: 'terror'},
     {cod: 'T3', titulo: 'Black phone', genero: 'terror'},
 ]
+localStorage.setItem('peliculas', JSON.stringify(peliculas))
 let peliculasFiltradas = []
 
 
