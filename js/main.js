@@ -1,7 +1,16 @@
-console.log("CODERHOUSE - Entregable 06: Incorporar Eventos")
+console.log("CODERHOUSE - Entregable 07: 2a Entrega del Proyecto Fina")
+
+// Storage
+// localStorage = setItem("votos")
 
 // Elementos del DOM
+const containerUsuario = document.getElementById('container-usuario')
+const formUsuario = document.getElementById('form-usuario')
+
+const containerApp = document.getElementById('container-app')
+
 const tagBievendia = document.getElementById('tag-bienvenido')
+
 const tagMisVotos = document.getElementById('tag-misvotos')
 const tagItemsVotos = document.getElementById('tag-items-votos')
 
@@ -33,7 +42,6 @@ const peliculas = [
     {cod: 'T3', titulo: 'Black phone', genero: 'terror'},
 ]
 let peliculasFiltradas = []
-
 
 
 // Definición de clase
@@ -81,10 +89,26 @@ function filtrarPeliculasPorGenero(generoElegido) {
 }
 
 
+
+
+/*
+1.- Solicitar nombre del usuario con Formulario para crear objeto usuario
+2.- Mostrar lista de categorias
+3.-
+4.-
+*/
+
+
+const usuario = new Usuario('');
 // Crear objeto Usuario.
-const usuario = new Usuario(prompt("Cuál es tu nombre?"))
-console.log("Bienvenido " + usuario.nombre)
-tagBievendia.innerHTML = 'Bienvenido <strong>' + usuario.nombre + '</strong>'
+//const usuario = new Usuario(prompt("Cuál es tu nombre?"))
+formUsuario.addEventListener('submit', (e) => {
+    e.preventDefault()
+    usuario.nombre = document.getElementById('username').value
+    containerUsuario.classList.add('hidden')
+    containerApp.classList.remove('hidden')
+    tagBievendia.innerText = usuario.nombre
+})
 
 
 // Evento cuando el elemeto Selecte cambia de opcion.
@@ -99,7 +123,7 @@ elementGeneros.addEventListener('change', (e) => {
 
 // Evento cuando hace click en un boton película para registrar el voto
 elementPeliculas.addEventListener("click", (e) => {
-    console.log(e.target.getAttribute('aria-cod'))
+    //console.log(e.target.getAttribute('aria-cod'))
     usuario.agregarVoto(peliculasFiltradas.find((el) => el.cod == e.target.getAttribute('aria-cod')))
     
     // Contar elemento y manipular con el DOM
@@ -108,6 +132,6 @@ elementPeliculas.addEventListener("click", (e) => {
     // Mostrar Títulos de peliculas elegidas
     tagItemsVotos.innerHTML = ""
     usuario.votos.forEach(voto => {
-        tagItemsVotos.innerHTML += "<li class='ml-1'><p>"+ voto.titulo +"</p></li>"
+        tagItemsVotos.innerHTML += "<li>"+ voto.titulo +"</li>"
     })
 })

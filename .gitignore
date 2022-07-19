@@ -9,3 +9,4 @@
 .Trashes
 
 *.sublime-workspace
+node_modules/

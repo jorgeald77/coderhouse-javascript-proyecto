@@ -1,75 +1,128 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="author" content="Jorge Guzmán Aguilar">
-    <meta about="Simulador interactivo">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="author" content="Jorge Guzmán Aguilar" />
+    <meta about="Simulador interactivo" />
     <title>JGA | Simulador interactivo</title>
-    <link rel="stylesheet" href="./css/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./css/tailwind.css" />
+  </head>
+  <body>
     <!-- Main header -->
-    <header class="main-header bg-blue">
-        <div>
-            <h3>CODERHOUSE Javascript</h3>
-        </div>
+    <header
+      id="header"
+      class="px-8 flex justify-between items-center bg-appblue"
+    >
+      <h3 class="text-2xl font-extrabold tracking-wide">
+        CODERHOUSE Javascript
+      </h3>
 
-        <div class="entregable">
-            <p><strong>Entregable 06</strong></p>
-            <p>Incorporar Eventos</p>
-        </div>
+      <div class="text-center">
+        <h5 class="font-bold tracking-wide">Entregable 07</h5>
+        <p>2a Entrega - Proyecto Final</p>
+      </div>
     </header>
 
+    <aside id="aside" class="p-2">
+      <h3 class="text-center font-bold min-w-min">
+        Bienvenido<br /><span id="tag-bienvenido" class="tracking-wide"></span>
+      </h3>
+    </aside>
+
     <!-- Main content -->
-    <main class="container mt-1">
-        <div>
-            <h3 id="tag-bienvenido"></h3>
-            <p>Te invitamos a realizar la votación de tus películas favoritas.</p>
-            <p>Selecciona el género de películas y posteriormente elige la película de tu preferencia, esto lo puede hacer repetidamente.</p>
+    <main id="content">
+      <div id="container-usuario" class="text-center">
+        <div class="my-8">
+          <p class="text-sm">Votación de tus películas favoritas</p>
         </div>
-        
-        <div class="flex">
-            <div class="p-1">
-                <!-- Géneros -->
-                <div>
-                    <h5 id="">Géneros</h5>
-                    <select name="generos" id="generos">
-                        <option value="">Elige un género de películas...</option>
-                    </select>
-                </div>
 
-                <!-- Películas -->
-                <div class="mt-1">
-                    <h5>Películas</h5>
-                    <div id="peliculas" class="flex flex-col" style="gap: 10px;"></div>
-                </div>
+        <div class="max-w-xs mx-auto">
+          <form id="form-usuario">
+            <div>
+              <label
+                for="username"
+                class="text-left block font-medium text-sm text-gray-700 truncate"
+                >Nombre</label
+              >
+              <input
+                type="text"
+                id="username"
+                class="block mt-1 w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-gray-900 focus:border-gray-900"
+                placeholder="Escribe tu nombre"
+                minlength="3"
+                required
+              />
             </div>
 
-            <div class="p-1">
-                <h5>Votos registrados: <span id="numvotos">0</span></h5>
-
-                <div id="tag-misvotos" class="mt-1">
-                    <h5>Votaste por: <span></span></h6>
-                    <ul id="tag-items-votos"></ul>
-                </div>
+            <div class="mt-4">
+              <button
+                style="padding: 0.5rem 1rem; background-color: aqua"
+                type="sumbit"
+              >
+                Entrar
+              </button>
             </div>
+          </form>
         </div>
+      </div>
+
+      <div id="container-app" class="hidden">
+        <div class="flex flex-col">
+          <!-- Géneros -->
+          <div class="h-20 p-2 border-b-2 w-full">
+            <div class="text-center">
+              <label for="generos">Género</label>
+              <select name="generos" id="generos">
+                <option value="">Elige un género de películas...</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Películas -->
+          <div class="mt-1">
+            <h5>Películas</h5>
+            <div id="peliculas" class="flex flex-col" style="gap: 10px"></div>
+          </div>
+        </div>
+      </div>
     </main>
 
+    <aside id="aside-right" class="p-2">
+      <div>
+        <h5 class="text-center font-bold uppercase">
+          Votos: <span id="numvotos">0</span>
+        </h5>
+
+        <div id="tag-misvotos" class="mt-4">
+          <ul id="tag-items-votos"></ul>
+        </div>
+      </div>
+    </aside>
+
     <!--Main footer -->
-    <footer class="main-footer">
-        <h4 class="entregable">DESAFÍO</h4>
+    <footer id="footer" class="p-4 bg-appgreen text-appgray">
+      <h5 class="font-bold tracking-wide">DESAFÍO</h5>
 
-        <p><strong>Consigna:</strong> Asociar eventos que buscamos controlar sobre los elementos de la interfaz de nuestro simulador.</p>
+      <p>
+        <strong>Consigna:</strong> Agregar y entregar uso de JSON, Storage, DOM
+        y Eventos del usuario
+      </p>
 
-        <ul class="ml-1">
-            <li>Crear elementos manipulando el DOM a partir de la información de los objetos.</li>
-            <li>Modificar etiquetas existentes en función del resultado de operaciones.</li>
-        </ul>
+      <ul class="ml-1">
+        <li>Definir eventos a manejar y su función de respuesta.</li>
+        <li>
+          Modificar en DOM, ya sea para definir elementos al cargar la página o
+          para realizar salidas de un procesamiento.
+        </li>
+        <li>Almacenar datos (clave-valor) en el Storage y recuperarlos</li>
+      </ul>
     </footer>
 
     <script src="./js/main.js"></script>
-</body>
+  </body>
 </html>
