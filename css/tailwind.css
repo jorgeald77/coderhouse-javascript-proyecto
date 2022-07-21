@@ -31201,7 +31201,7 @@ select {
 
 body {
   display: grid;
-  grid-template-columns: 15% 1fr 15%;
+  grid-template-columns: 15% 1fr 25%;
   grid-template-rows: 4rem 1fr 10rem;
   grid-template-areas:
     "header header header"
@@ -31221,7 +31221,6 @@ body {
 #content {
   grid-area: main;
   overflow: auto;
-  border: 1px solid red;
 }
 
 #aside-right {
