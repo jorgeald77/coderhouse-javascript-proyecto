@@ -1,4 +1,4 @@
-console.log("CODERHOUSE - Entregable 07: 2a Entrega del Proyecto Fina");
+console.log("CODERHOUSE - Entregable 08: Optimizando el proyecto final");
 
 // Guardar en LocalStorage los catálogos de Películas y Géneros
 localStorage.setItem(
@@ -67,9 +67,8 @@ class Votos {
     this.votos = [];
   }
 
-  //  Contar los votos del usuarios
+  //  Contar los votos
   contarVotos() {
-    // Contar elemento y manipular con el DOM
     return this.votos.length;
   }
 
@@ -83,11 +82,13 @@ class Votos {
 
   // Eliminar pelicula de la votación
   borrarVoto(code) {
-    if (this.votos.some((el) => el.cod === code)) {
-        let i = this.votos.findIndex((el) => el.cod === code)
-        this.votos.splice(i, 1)
-    }
-    this.render()
+    if (this.votos.some((el) => el.cod === code))
+      this.votos.splice(
+        this.votos.findIndex((el) => el.cod === code),
+        1
+      );
+
+    this.render();
   }
 
   // Renderizar los votos
@@ -122,7 +123,7 @@ function filtrarPeliculasPorGenero(generoElegido) {
   });
 }
 
-// Crear objeto Usuario.
+// Listener submit, formulario
 formUsuario.addEventListener("submit", (e) => {
   e.preventDefault();
   usuario.nombre = document.getElementById("username").value;
@@ -131,17 +132,16 @@ formUsuario.addEventListener("submit", (e) => {
   tagBievendia.innerText = usuario.nombre;
 });
 
-// Evento cuando el elemeto Select cambia mostrar películas.
+// Listener change, select generos
 elementGeneros.addEventListener("change", (e) => {
   elementPeliculas.innerHTML = "";
-  if (e.target.value !== "") {
-    filtrarPeliculasPorGenero(e.target.value);
-  } else {
-    elementPeliculas.innerHTML = "";
-  }
+
+  e.target.value !== ""
+    ? filtrarPeliculasPorGenero(e.target.value)
+    : (elementPeliculas.innerHTML = "");
 });
 
-// Evento cuando hace click en un boton película para registrar el voto
+// Listener click, peliculas
 elementPeliculas.addEventListener("click", (e) => {
   votos.agregarVoto(
     peliculasFiltradas.find((el) => el.cod == e.target.getAttribute("aria-cod"))
