@@ -77,17 +77,40 @@ class Votos {
     if (this.votos.some((el) => el.cod == peli.cod) == false)
       this.votos.push(peli);
 
+      Toastify({
+        text: `Votaste por: ${peli.titulo}`,
+        duration: 3000, 
+        gravity: 'top',
+        position: 'right',
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)",
+        }
+      }).showToast();
     this.render();
   }
 
   // Eliminar pelicula de la votación
   borrarVoto(code) {
-    if (this.votos.some((el) => el.cod === code))
+    let peli = this.votos.find((el) => el.cod == code)
+
+    if (this.votos.some((el) => el.cod === code)) {
       this.votos.splice(
         this.votos.findIndex((el) => el.cod === code),
         1
       );
 
+      Toastify({
+        text: `Eliminaste: ${peli.titulo}`,
+        duration: 3000, 
+        gravity: 'top',
+        position: 'right',
+        style: {
+          background: "linear-gradient(to right, #ff5f6d, #ffc371)",
+        }
+      }).showToast();
+    }
+
+    
     this.render();
   }
 
