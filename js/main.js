@@ -100,7 +100,7 @@ class Votos {
       );
 
       Toastify({
-        text: `Votaste por: ${peli.titulo}`,
+        text: `Eliminaste: ${peli.titulo}`,
         duration: 3000, 
         gravity: 'top',
         position: 'right',
