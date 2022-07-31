@@ -4,7 +4,13 @@
 
 @tailwind utilities;
 
+
 body {
+  background-image: url('./../images/bg.jpeg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
   display: grid;
   grid-template-columns: 15% 1fr 25%;
   grid-template-rows: 4rem 1fr 10rem;
