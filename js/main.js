@@ -121,9 +121,9 @@ class Votos {
   borrarVoto(code) {
     let peli = this.votos.find((el) => el.id == code)
 
-    if (this.votos.some((el) => el.id === code)) {
+    if (this.votos.some((el) => el.id == code)) {
       this.votos.splice(
-        this.votos.findIndex((el) => el.id === code),
+        this.votos.findIndex((el) => el.id == code),
         1
       );
 
