@@ -12,29 +12,47 @@ const tagItemsVotos = document.getElementById("tag-items-votos");
 
 const elementGeneros = document.getElementById("generos");
 const elementPeliculas = document.getElementById("peliculas");
+const elementSpinner = document.getElementById("spinner");
 const elementNumVotos = document.getElementById("numvotos");
 
-const genres = JSON.parse(sessionStorage.getItem('genres'));
-
+const genres = JSON.parse(sessionStorage.getItem("genres"));
 
 // Guardar en sessionStorage los catálogos de Géneros
-if(sessionStorage.getItem('genres') === null) {
-  fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=46870299310130ffbfbd57d5fd9e6951&language=es')
+if (sessionStorage.getItem("genres") === null) {
+  fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=46870299310130ffbfbd57d5fd9e6951&language=es")
   .then((response) => response.json())
   .then((data) => {
-    sessionStorage.setItem('genres', JSON.stringify(data.genres))
-  })
+    sessionStorage.setItem("genres", JSON.stringify(data.genres));
+  });
 }
 
-// Guardar en sessionStorage los catálogos de Películas
+// Guardar en sessionStorage los catálogos de Películas si no se tienen
 function getPelisByGenere(generoid) {
-  if(sessionStorage.getItem(generoid) === null) {
-    fetch(`https://api.themoviedb.org/3/discover/movie?api_key=46870299310130ffbfbd57d5fd9e6951&with_genres=${generoid}&language=es`)
-    .then((response) => response.json())
-    .then((data) => {
-      sessionStorage.setItem(generoid, JSON.stringify(data.results))
-    })
+  elementSpinner.classList.remove("hidden");
+
+  if (sessionStorage.getItem(generoid) === null) {
+    fetch(
+      `https://api.themoviedb.org/3/discover/movie?api_key=46870299310130ffbfbd57d5fd9e6951&with_genres=${generoid}&language=es`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        sessionStorage.setItem(generoid, JSON.stringify(data.results));
+      })
+      .finally(() => {
+        this.renderPeliculas(generoid);
+      });
+  } else {
+    this.renderPeliculas(generoid);
   }
+}
+
+// Mostrar las películas segun la categoría
+function renderPeliculas(generoid) {
+  elementSpinner.classList.add("hidden");
+
+  JSON.parse(sessionStorage.getItem(generoid)).map(function (mov) {
+    elementPeliculas.innerHTML += `<button role="button" class="btn-pelicula" aria-gen="${generoid}" aria-cod="${mov.id}">${mov.title}</button>`;
+  });
 }
 
 // Definición de clase
@@ -64,21 +82,21 @@ class Votos {
     if (this.votos.some((el) => el.id == peli.id) == false)
       this.votos.push(peli);
 
-      Toastify({
-        text: `Votaste por: ${peli.title}`,
-        duration: 3000, 
-        gravity: 'top',
-        position: 'right',
-        style: {
-          background: "linear-gradient(to right, #00b09b, #96c93d)",
-        }
-      }).showToast();
+    Toastify({
+      text: `Votaste por: ${peli.title}`,
+      duration: 3000,
+      gravity: "top",
+      position: "right",
+      style: {
+        background: "linear-gradient(to right, #00b09b, #96c93d)",
+      },
+    }).showToast();
     this.render();
   }
 
   // Eliminar pelicula de la votación
   borrarVoto(code) {
-    let peli = this.votos.find((el) => el.id == code)
+    let peli = this.votos.find((el) => el.id == code);
 
     if (this.votos.some((el) => el.id == code)) {
       this.votos.splice(
@@ -88,16 +106,15 @@ class Votos {
 
       Toastify({
         text: `Eliminaste: ${peli.title}`,
-        duration: 3000, 
-        gravity: 'top',
-        position: 'right',
+        duration: 3000,
+        gravity: "top",
+        position: "right",
         style: {
           background: "linear-gradient(to right, #ff5f6d, #ffc371)",
-        }
+        },
       }).showToast();
     }
 
-    
     this.render();
   }
 
@@ -112,11 +129,10 @@ class Votos {
 }
 const votos = new Votos();
 
-
 // Llenar elemento Select con los géneros de películas
 genres.map(function (g) {
   elementGeneros.innerHTML += `<option value="${g.id}"><span class="uppercase">${g.name}</span></option>`;
-})
+});
 
 // Listener submit, formulario
 formUsuario.addEventListener("submit", (e) => {
@@ -132,17 +148,15 @@ elementGeneros.addEventListener("change", (e) => {
   elementPeliculas.innerHTML = "";
 
   if (e.target.value !== "") {
-    this.getPelisByGenere(e.target.value)
-    
-    JSON.parse(sessionStorage.getItem(e.target.value)).map(function (mov) {
-      elementPeliculas.innerHTML += `<button role="button" class="btn-pelicula" aria-gen="${e.target.value}" aria-cod="${mov.id}">${mov.title}</button>`;
-    })
+    this.getPelisByGenere(e.target.value);
   }
 });
 
 // Listener click, peliculas
 elementPeliculas.addEventListener("click", (e) => {
   votos.agregarVoto(
-    JSON.parse(sessionStorage.getItem(e.target.getAttribute("aria-gen"))).find((el) => el.id == e.target.getAttribute("aria-cod"))
+    JSON.parse(sessionStorage.getItem(e.target.getAttribute("aria-gen"))).find(
+      (el) => el.id == e.target.getAttribute("aria-cod")
+    )
   );
 });
