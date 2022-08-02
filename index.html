@@ -11,8 +11,11 @@
     <meta about="Simulador interactivo" />
     <title>JGA | Simulador interactivo</title>
     <link rel="stylesheet" href="./css/tailwind.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
   </head>
   <body>
     <!-- Main header -->
@@ -25,19 +28,19 @@
       </h3>
 
       <div class="text-center">
-        <h5 class="font-bold tracking-wide">Entregable 09</h5>
-        <p>Incorporar librerias</p>
+        <h5 class="font-bold tracking-wide">Entregable 10</h5>
+        <p>Fetch en tu proyecto</p>
       </div>
     </header>
 
     <aside id="aside" class="p-2">
-      <h3 class="text-center font-bold min-w-min">
+      <h3 class="text-center font-bold min-w-min text-white">
         Bienvenido<br /><span id="tag-bienvenido" class="tracking-wide"></span>
       </h3>
     </aside>
 
     <!-- Main content -->
-    <main id="content">
+    <main id="content" class="relative">
       <div id="container-usuario" class="text-center">
         <div class="my-8">
           <p class="text-sm">Votación de tus películas favoritas</p>
@@ -48,7 +51,7 @@
             <div>
               <label
                 for="username"
-                class="text-left block font-medium text-sm text-gray-700 truncate"
+                class="text-left block font-medium text-sm text-white truncate"
                 >Nombre</label
               >
               <input
@@ -92,9 +95,24 @@
           </div>
         </div>
       </div>
+
+      <div
+        class="absolute right-0 bottom-0 px-1 rounded-md bg-gray-900/50 text-gray-400"
+      >
+        Foto de
+        <a
+          href="https://unsplash.com/@felixmooneeram?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+          >Felix Mooneeram</a
+        >
+        en
+        <a
+          href="https://unsplash.com/es/s/fotos/cine?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+          >Unsplash</a
+        >
+      </div>
     </main>
 
-    <aside id="aside-right" class="p-2">
+    <aside id="aside-right" class="p-2 text-white">
       <div>
         <h5 class="text-center font-bold uppercase">
           Votos: <span id="numvotos">0</span>
@@ -111,16 +129,22 @@
       <h5 class="font-bold tracking-wide">DESAFÍO</h5>
 
       <p>
-        <strong>Consigna: </strong>Incorporar almenos una librería al proyecto, brindándole un uso relevante.
+        <strong>Consigna: </strong> Utiliza fetch() para cargar datos en tu
+        aplicación de forma asincrónica.
       </p>
 
       <ul class="ml-1 text-xs list-disc list-inside">
-        <li>Incorporar una librería al proyecto de manera coherente, cuya aplicación se torne significativa para el proyecto.</li>
-        <li>Justifica tu elección según la naturaleza del proyecto y la utilidad que la librería seleccionada puede tener en él.</li>
+        <li>
+          Si tengo una app sobre películas y series, armar mi catálogo
+          consultando una API que envíe datos sobre ésto.
+        </li>
       </ul>
     </footer>
 
     <script src="./js/main.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
   </body>
 </html>
