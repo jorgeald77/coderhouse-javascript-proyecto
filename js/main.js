@@ -16,6 +16,8 @@ const elementNumVotos = document.getElementById("numvotos");
 
 const genres = JSON.parse(sessionStorage.getItem('genres'));
 
+
+// Guardar en sessionStorage los catálogos de Géneros
 if(sessionStorage.getItem('genres') === null) {
   fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=46870299310130ffbfbd57d5fd9e6951&language=es')
   .then((response) => response.json())
@@ -24,7 +26,7 @@ if(sessionStorage.getItem('genres') === null) {
   })
 }
 
-
+// Guardar en sessionStorage los catálogos de Películas
 function getPelisByGenere(generoid) {
   if(sessionStorage.getItem(generoid) === null) {
     fetch(`https://api.themoviedb.org/3/discover/movie?api_key=46870299310130ffbfbd57d5fd9e6951&with_genres=${generoid}&language=es`)
@@ -34,49 +36,6 @@ function getPelisByGenere(generoid) {
     })
   }
 }
-
-
-
-
-
-
-
-
-// Guardar en LocalStorage los catálogos de Películas y Géneros
-localStorage.setItem(
-  "generos",
-  JSON.stringify(["acción", "comedia", "suspenso", "terror"])
-);
-localStorage.setItem(
-  "peliculas",
-  JSON.stringify([
-    { cod: "A0", titulo: "Top Gun: Maverick", genero: "acción" },
-    { cod: "A1", titulo: "Interceptor", genero: "acción" },
-    { cod: "A2", titulo: "Prisioneros de Ghostland", genero: "acción" },
-    { cod: "A3", titulo: "Agentes 355", genero: "acción" },
-
-    { cod: "C0", titulo: "Cásate conmigo", genero: "comedia" },
-    { cod: "C1", titulo: "Agentes 355", genero: "comedia" },
-    { cod: "C2", titulo: "Jackass forever", genero: "comedia" },
-    { cod: "C3", titulo: "I want you back", genero: "comedia" },
-
-    { cod: "S0", titulo: "Pienso en el final", genero: "suspenso" },
-    { cod: "S1", titulo: "Hannibal", genero: "suspenso" },
-    { cod: "S2", titulo: "El juego", genero: "suspenso" },
-    { cod: "S3", titulo: "La cabeza de la araña", genero: "suspenso" },
-
-    { cod: "T0", titulo: "La abuela", genero: "terror" },
-    { cod: "T1", titulo: "Scream", genero: "terror" },
-    { cod: "T2", titulo: "El páramo", genero: "terror" },
-    { cod: "T3", titulo: "Black phone", genero: "terror" },
-  ])
-);
-
-// Obtener datos de LocalStorage
-const generos = JSON.parse(localStorage.generos);
-const peliculas = JSON.parse(localStorage.peliculas);
-
-let peliculasFiltradas = [];
 
 // Definición de clase
 class Usuario {
@@ -155,36 +114,9 @@ const votos = new Votos();
 
 
 // Llenar elemento Select con los géneros de películas
-/*
-generos.forEach((value, index, array) => {
-  elementGeneros.innerHTML += `<option value="${value}"><span class="uppercase">${value}</span></option>`;
-});
-*/
 genres.map(function (g) {
   elementGeneros.innerHTML += `<option value="${g.id}"><span class="uppercase">${g.name}</span></option>`;
 })
-
-
-// Función para construir menu de peliculas segun el género elegido.
-function filtrarPeliculasPorGenero(generoElegido) {
-  this.getPelisByGenere(generoElegido)
-
-  // Dejar variables en blanco o vacias para construir un menu nuevo.
-  // peliculasFiltradas = [];
-
-  // Hacer uso del filter() para obtener las películas segun el genereElegido
-  /*peliculasFiltradas = peliculas.filter((el) =>
-    el.genero.includes(generoElegido)
-  );*/
-
-  // Construir menu películas a partir de recorrer el array "peliculasFiltradas" para mostrarlo en el Prompt.
-  /*peliculasFiltradas.forEach((value, index, array) => {
-    elementPeliculas.innerHTML += `<button role="button" class="btn-pelicula" aria-cod="${value.cod}">${value.titulo}</button>`;
-  });*/
-  JSON.parse(sessionStorage.getItem(generoElegido)).map(function (mov) {
-    elementPeliculas.innerHTML += `<button role="button" class="btn-pelicula" aria-gen="${generoElegido}" aria-cod="${mov.id}">${mov.title}</button>`;
-  })
-}
 
 // Listener submit, formulario
 formUsuario.addEventListener("submit", (e) => {
@@ -199,9 +131,13 @@ formUsuario.addEventListener("submit", (e) => {
 elementGeneros.addEventListener("change", (e) => {
   elementPeliculas.innerHTML = "";
 
-  e.target.value !== ""
-    ? filtrarPeliculasPorGenero(e.target.value)
-    : (elementPeliculas.innerHTML = "");
+  if (e.target.value !== "") {
+    this.getPelisByGenere(e.target.value)
+    
+    JSON.parse(sessionStorage.getItem(e.target.value)).map(function (mov) {
+      elementPeliculas.innerHTML += `<button role="button" class="btn-pelicula" aria-gen="${e.target.value}" aria-cod="${mov.id}">${mov.title}</button>`;
+    })
+  }
 });
 
 // Listener click, peliculas
