@@ -12,9 +12,14 @@ module.exports = {
                 'appred': '#F25D50',
                 'apporange': '#FFA652',
             },
+            fontFamily: {
+                'koliko-regular': ['Koliko Regular'],
+                'koliko-bold': ['Koliko Bold'],
+                'koliko-light': ['Koliko Light'],
+            }
         },
     },
     plugins: [
-        require('@tailwindcss/forms'),
+        require('@tailwindcss/forms')
     ],
 }
