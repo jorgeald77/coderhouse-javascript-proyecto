@@ -60,6 +60,10 @@ input[type='email'] {
     @apply w-full text-black shadow-sm border-slate-300 rounded-md focus:ring-slate-900 focus:border-slate-900;
 }
 
+input[type='checkbox'] {
+    @apply text-black shadow-sm border-slate-300 rounded-md focus:ring-slate-900 focus:border-slate-900;
+}
+
 select {
     @apply text-black shadow-sm border-slate-300 rounded-md focus:ring-slate-900 focus:border-slate-900;
 }
@@ -69,9 +73,15 @@ button {
 }
 
 
-#registro {
-    @apply h-screen flex justify-center pt-7;
+.dropdown:focus-within .dropdown-menu {
+    opacity:1;
+    transform: translate(0) scale(1);
+    visibility: visible;
 }
+
+
+
+
 
 #header {
     grid-area: header;
