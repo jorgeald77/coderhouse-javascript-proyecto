@@ -24,13 +24,29 @@ const seccionRegistro = document.getElementById('seccion-registro')
 const formRegistro = document.getElementById('form-registro')
 const seccionApp = document.getElementById('app')
 const usuarioNombre = document.getElementById('usuario-nombre')
+const elementoCategorias = document.getElementById("categorias")
+const btnCategorias = document.getElementById('categorias')
 let usuario;
+
+// Guardar en sessionStorage los catálogos de Categorías
+if (getSessionStorage('categorias') === false) {
+    fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=46870299310130ffbfbd57d5fd9e6951&language=es")
+        .then((response) => response.json())
+        .then((data) => {
+            setSessionStorage('categorias', data.genres);
+        });
+}
 
 // Función con la que ocultamos el Formulario y Mostramos la App
 function initApp() {
     seccionRegistro.classList.add("hidden")
     seccionApp.classList.remove("hidden")
     usuarioNombre.innerText = usuario.nombre
+
+    getSessionStorage('categorias').map(function (category) {
+        // TODO dar mejor diseño al botón
+        elementoCategorias.innerHTML += `<li><button role="button" class="btn-cat text-xl lowercase" aria-cat="${category.id}">${category.name}</button></li>`;
+    });
 }
 
 // Validamos si existen datos del usuario
@@ -42,6 +58,7 @@ if (getSessionStorage('usuario')) {
     usuario = getSessionStorage('usuario')
     initApp()
 }
+
 
 // Evento del formulario de registro
 formRegistro.addEventListener('submit', (event) => {
@@ -63,4 +80,8 @@ formRegistro.addEventListener('submit', (event) => {
 })
 
 
-// Carga de categorias de películas
+// Listener click, categoria
+btnCategorias.addEventListener('click', (event) => {
+    alert(event.target.getAttribute('aria-cat'))
+    // TODO Obtener las peliculas de la categoría seleccionada y guardalas en SessionStorage
+})
