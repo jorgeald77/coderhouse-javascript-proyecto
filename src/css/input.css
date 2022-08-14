@@ -6,25 +6,25 @@
     font-family: "Open Sans";
     font-style: normal;
     font-weight: 300;
-    src: url("../fonts/OpenSans/OpenSans-Light.ttf") format('truetype');
+    src: url("./../fonts/OpenSans/OpenSans-Light.ttf") format('truetype');
 }
 
 @font-face {
     font-family: "Koliko Light";
     font-style: normal;
-    src: url("../fonts/Koliko/koliko-Light.woff") format('woff');
+    src: url("./../fonts/Koliko/koliko-Light.woff") format('woff');
 }
 
 @font-face {
     font-family: "Koliko Regular";
     font-style: normal;
-    src: url("../fonts/Koliko/koliko-Regular.woff") format('woff');
+    src: url("./../fonts/Koliko/koliko-Regular.woff") format('woff');
 }
 
 @font-face {
     font-family: "Koliko Bold";
     font-style: normal;
-    src: url("../fonts/Koliko/koliko-Bold.woff") format('woff');
+    src: url("./../fonts/Koliko/koliko-Bold.woff") format('woff');
 }
 
 body {
@@ -62,17 +62,15 @@ button {
 }
 
 
-
-#app {
-      display: grid;
-      grid-template-columns: 300px 1fr 25%;
-      grid-template-rows: 4rem 1fr 10rem;
-      grid-template-areas:
-      "header header header"
-      "aside main asideright"
-      "footer footer footer";
+.app {
+    display: none;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 4rem 1fr 10rem;
+    grid-template-areas:
+      "header header"
+      "aside main"
+      "footer footer";
 }
-
 
 #header {
     grid-area: header;
@@ -80,11 +78,6 @@ button {
 
 #aside {
     grid-area: aside;
-    border: 1px greenyellow solid;
-}
-
-.btn-cat {
-    font-family: "Koliko Light";
 }
 
 #content {
@@ -100,6 +93,12 @@ button {
     grid-area: footer;
 }
 
+
+.btn-cat {
+    font-family: "Koliko Light";
+    @apply flex gap-x-3 px-2 items-center w-full h-8 bg-slate-800 text-slate-400 hover:text-slate-100;
+}
+
 .btn-pelicula {
     border: none;
     border-radius: 5px;
@@ -111,6 +110,7 @@ button {
     text-decoration: none;
     display: inline-block;
 }
+
 
 .spinner {
     margin: 100px auto;
