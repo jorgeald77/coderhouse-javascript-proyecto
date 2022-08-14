@@ -3,25 +3,32 @@
 @tailwind utilities;
 
 @font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 300;
+    src: url("../fonts/OpenSans/OpenSans-Light.ttf") format('truetype');
+}
+
+@font-face {
     font-family: "Koliko Light";
     font-style: normal;
-    src: url("../fonts/koliko/koliko-Light.woff") format('woff');
+    src: url("../fonts/Koliko/koliko-Light.woff") format('woff');
 }
 
 @font-face {
     font-family: "Koliko Regular";
     font-style: normal;
-    src: url("../fonts/koliko/koliko-Regular.woff") format('woff');
+    src: url("../fonts/Koliko/koliko-Regular.woff") format('woff');
 }
 
 @font-face {
     font-family: "Koliko Bold";
     font-style: normal;
-    src: url("../fonts/koliko/koliko-Bold.woff") format('woff');
+    src: url("../fonts/Koliko/koliko-Bold.woff") format('woff');
 }
 
 body {
-    @apply font-koliko-light text-slate-100 bg-black;
+    @apply font-open-sans text-slate-100 bg-black;
     min-height: 100vh;
     background-image: linear-gradient(rgba(5, 7, 12, 0.35), rgba(5, 7, 12, 0.35)), url('./../images/bg.jpeg');
     background-repeat: no-repeat;
@@ -42,15 +49,15 @@ body {
 }
 
 label {
-    @apply block text-base text-slate-100;
+    @apply block text-base text-slate-100 font-koliko-light tracking-widest;
 }
 
 input[type='text'] {
-    @apply text-black shadow-sm border-slate-300 rounded-md focus:ring-slate-900 focus:border-slate-900;
+    @apply w-full text-black shadow-sm border-slate-300 rounded-md focus:ring-slate-900 focus:border-slate-900;
 }
 
 input[type='email'] {
-    @apply text-black shadow-sm border-slate-300 rounded-md focus:ring-slate-900 focus:border-slate-900;
+    @apply w-full text-black shadow-sm border-slate-300 rounded-md focus:ring-slate-900 focus:border-slate-900;
 }
 
 select {

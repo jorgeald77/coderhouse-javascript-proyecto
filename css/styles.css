@@ -1012,11 +1012,21 @@ select {
 }
 
 @font-face {
+  font-family: "Open Sans";
+
+  font-style: normal;
+
+  font-weight: 300;
+
+  src: url("../fonts/OpenSans/OpenSans-Light.ttf") format('truetype');
+}
+
+@font-face {
   font-family: "Koliko Light";
 
   font-style: normal;
 
-  src: url("../fonts/koliko/koliko-Light.woff") format('woff');
+  src: url("../fonts/Koliko/koliko-Light.woff") format('woff');
 }
 
 @font-face {
@@ -1024,7 +1034,7 @@ select {
 
   font-style: normal;
 
-  src: url("../fonts/koliko/koliko-Regular.woff") format('woff');
+  src: url("../fonts/Koliko/koliko-Regular.woff") format('woff');
 }
 
 @font-face {
@@ -1032,13 +1042,13 @@ select {
 
   font-style: normal;
 
-  src: url("../fonts/koliko/koliko-Bold.woff") format('woff');
+  src: url("../fonts/Koliko/koliko-Bold.woff") format('woff');
 }
 
 body {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
-  font-family: Koliko Light;
+  font-family: Open Sans, sans-serif;
   --tw-text-opacity: 1;
   color: rgb(241 245 249 / var(--tw-text-opacity));
   min-height: 100vh;
@@ -1061,13 +1071,16 @@ body {
 
 label {
   display: block;
+  font-family: Koliko Light;
   font-size: 1rem;
   line-height: 1.5rem;
+  letter-spacing: 0.1em;
   --tw-text-opacity: 1;
   color: rgb(241 245 249 / var(--tw-text-opacity));
 }
 
 input[type='text'] {
+  width: 100%;
   border-radius: 0.375rem;
   --tw-border-opacity: 1;
   border-color: rgb(203 213 225 / var(--tw-border-opacity));
@@ -1086,6 +1099,7 @@ input[type='text']:focus {
 }
 
 input[type='email'] {
+  width: 100%;
   border-radius: 0.375rem;
   --tw-border-opacity: 1;
   border-color: rgb(203 213 225 / var(--tw-border-opacity));

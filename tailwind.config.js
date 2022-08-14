@@ -13,6 +13,7 @@ module.exports = {
                 'apporange': '#FFA652',
             },
             fontFamily: {
+                'open-sans': ['Open Sans', 'sans-serif'],
                 'koliko-regular': ['Koliko Regular'],
                 'koliko-bold': ['Koliko Bold'],
                 'koliko-light': ['Koliko Light'],
