@@ -46,10 +46,32 @@
     </div>
 </section>
 
-
 <section id="app" class="app">
     <header id="header" class="flex justify-between items-center h-16 px-8 bg-slate-900">
         <h3 class="font-koliko-regular text-3xl tracking-widest">MOVIECODER</h3>
+
+        <div class="relative inline-block text-left">
+            <div>
+                <button type="button"
+                        class="group inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+                        id="menu-button" aria-expanded="true" aria-haspopup="true">
+                    Mis votos
+                    <!-- Heroicon name: solid/chevron-down -->
+                    <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                         fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                              clip-rule="evenodd"/>
+                    </svg>
+
+                    <div class="hidden group-focus:block origin-top-right absolute right-0 mt-8 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                         role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="1000">
+                        <div id="mis-votos" class="py-1" role="none"></div>
+                    </div>
+                </button>
+            </div>
+        </div>
+
         <button type="button"
                 class="flex items-center text-sm font-medium text-gray-900 rounded-full transition duration-150 ease-in-out hover:text-blue-600 dark:hover:text-blue-500 md:mr-0 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-white">
             <span class="sr-only">Open user menu</span>
@@ -57,14 +79,12 @@
             <span id="usuario-nombre"></span>
         </button>
     </header>
-
     <aside id="aside" class="w-64 rounded-r-md">
         <div class="px-6 pt-8">
             <div class="flex items-center justify-center">
                 <h3 class="text-center text-xl font-koliko-light tracking-widest">CATEGORÍAS</h3>
             </div>
         </div>
-
         <div id="list-categorias" class="px-2 pt-4 overflow-y-auto">
             <div id="spinner-cat" class="spinner">
                 <div class="rect1"></div>
@@ -72,24 +92,23 @@
                 <div class="rect3"></div>
                 <div class="rect4"></div>
             </div>
-            <ul id="categorias" class="px-6 overscroll-y-auto">
-            </ul>
+            <ul id="categorias" class="px-6 overscroll-y-auto"></ul>
         </div>
     </aside>
 
-    <main id="content" class="pt-8 px-6 flex flex-col border border-red-500 w-full">
-        <h3 id="categoria-seleccionada" class="font-koliko-regular tracking-widest uppercase">Categoría selecionada</h3>
-
+    <main id="content" class="pt-8 px-6 flex flex-col w-full">
+        <div class="flex items-center justify-between bg-slate-900 w-full px-8 py-4 mb-8">
+            <h3 id="categoria-seleccionada" class="font-koliko-regular tracking-widest uppercase">Categoría
+                selecionada</h3>
+        </div>
         <div id="spinner-mov" class="spinner hidden">
             <div class="rect1"></div>
             <div class="rect2"></div>
             <div class="rect3"></div>
             <div class="rect4"></div>
         </div>
-
-        <div id="peliculas" class="flex gap-10">
-
-        </div>
+        <secciont id="peliculas"
+                  class="md:p-3 lg:p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></secciont>
     </main>
     <!--
             <main id="content" class="relative">
