@@ -12,9 +12,20 @@ module.exports = {
                 'appred': '#F25D50',
                 'apporange': '#FFA652',
             },
+            fontFamily: {
+                'open-sans': ['Open Sans', 'sans-serif'],
+                'koliko-regular': ['Koliko Regular'],
+                'koliko-bold': ['Koliko Bold'],
+                'koliko-light': ['Koliko Light'],
+            }
+        },
+    },
+    variants: {
+        extend: {
+            display: ['group-focus']
         },
     },
     plugins: [
-        require('@tailwindcss/forms'),
+        require('@tailwindcss/forms')
     ],
 }
