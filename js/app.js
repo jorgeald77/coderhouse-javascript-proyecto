@@ -138,6 +138,14 @@ function renderCategorias() {
                 </button>
             </li>`
     })
+
+    // Listener categoría elegida.
+    Array.from(btnCategorias).forEach(item => {
+        item.addEventListener('click', (event) => {
+            loadPeliculas(event.target.getAttribute('aria-cat'))
+        })
+    })
+
     categoriaSelecionada = getSessionStorage('categorias')[0]
     loadPeliculas(categoriaSelecionada.id)
 }
@@ -207,13 +215,6 @@ formRegistro.addEventListener('submit', (event) => {
     }
 
     initApp()
-})
-
-// Listener categoría elegida.
-Array.from(btnCategorias).forEach(item => {
-    item.addEventListener('click', (event) => {
-        loadPeliculas(event.target.getAttribute('aria-cat'))
-    })
 })
 
 // Listener para ocultar la seccion mis votos
