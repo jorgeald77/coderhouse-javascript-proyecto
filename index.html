@@ -49,29 +49,6 @@
 <section id="app" class="app">
     <header id="header" class="flex justify-between items-center h-16 px-8 bg-slate-900">
         <h3 class="font-koliko-regular text-3xl tracking-widest">MOVIECODER</h3>
-
-        <div class="relative inline-block text-left">
-            <div>
-                <button type="button"
-                        class="group inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
-                        id="menu-button" aria-expanded="true" aria-haspopup="true">
-                    Mis votos
-                    <!-- Heroicon name: solid/chevron-down -->
-                    <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                         fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd"
-                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                              clip-rule="evenodd"/>
-                    </svg>
-
-                    <div class="hidden group-focus:block origin-top-right absolute right-0 mt-8 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-                         role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="1000">
-                        <div id="mis-votos" class="py-1" role="none"></div>
-                    </div>
-                </button>
-            </div>
-        </div>
-
         <button type="button"
                 class="flex items-center text-sm font-medium text-gray-900 rounded-full transition duration-150 ease-in-out hover:text-blue-600 dark:hover:text-blue-500 md:mr-0 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-white">
             <span class="sr-only">Open user menu</span>
@@ -96,7 +73,7 @@
         </div>
     </aside>
 
-    <main id="content" class="pt-8 px-6 flex flex-col w-full">
+    <main id="content" class="relative pt-8 px-6 flex flex-col w-full">
         <div class="flex items-center justify-between bg-slate-900 w-full px-8 py-4 mb-8">
             <h3 id="categoria-seleccionada" class="font-koliko-regular tracking-widest uppercase">Categoría
                 selecionada</h3>
@@ -107,41 +84,20 @@
             <div class="rect3"></div>
             <div class="rect4"></div>
         </div>
-        <secciont id="peliculas"
-                  class="md:p-3 lg:p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></secciont>
+        <section id="peliculas"
+                 class="md:p-3 lg:p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></section>
+
+        <div id="seccion-misvotos" class="absolute right-0 top-0 z-10 bg-red-900 w-3/4 md:w-1/2 xl:w-1/3 h-full px-6 transform translate-x-full transition duration-200 ease-in-out">
+            <div class="absolute top-0 h-full w-10 h-full bg-yellow-800 -left-10">
+                <div class="relative">
+                    <button id="btn-misvotos" class="absolute -rotate-90 mt-14 -right-10 px-3 border hover:border-slate-800 hover:text-slate-900 whitespace-nowrap tracking-widest">MIS VOTOS
+                    </button>
+                </div>
+            </div>
+            <h2 class="font-koliko-light text-4xl my-4">Mis votos</h2>
+            <ul id="mis-votos" class="space-y-4"></ul>
+        </div>
     </main>
-    <!--
-            <main id="content" class="relative">
-
-                <div id="container-app">
-                    <div class="flex flex-col">
-                        <div class="mt-1">
-                            <h5>Películas</h5>
-                            <div id="spinner" class="spinner hidden">
-                                <div class="rect1"></div>
-                                <div class="rect2"></div>
-                                <div class="rect3"></div>
-                                <div class="rect4"></div>
-                                <div class="rect5"></div>
-                            </div>
-                            <div id="peliculas" class="flex flex-col" style="gap: 10px"></div>
-                        </div>
-                    </div>
-                </div>
-            </main>
-
-            <aside id="aside-right" class="p-2 text-white">
-                <div>
-                    <h5 class="text-center font-bold uppercase">
-                        Votos: <span id="numvotos">0</span>
-                    </h5>
-
-                    <div id="tag-misvotos" class="mt-4">
-                        <ul id="tag-items-votos" class="pl-2 pr-1"></ul>
-                    </div>
-                </div>
-            </aside>
-        -->
 </section>
 
 <script src="./js/app.js"></script>

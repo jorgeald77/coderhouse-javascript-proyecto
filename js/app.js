@@ -89,6 +89,8 @@ const elementoCategorias = document.getElementById('categorias')
 const categoriaTitulo = document.getElementById('categoria-seleccionada')
 const btnCategorias = document.getElementsByClassName('btn-cat')
 const conteinerPeliculas = document.getElementById('peliculas')
+const containerMisVotos = document.getElementById('seccion-misvotos')
+const btnMisVotos = document.getElementById('btn-misvotos')
 const misVotos = document.getElementById('mis-votos')
 let usuario;
 let categoriaSelecionada;
@@ -212,6 +214,17 @@ Array.from(btnCategorias).forEach(item => {
     item.addEventListener('click', (event) => {
         loadPeliculas(event.target.getAttribute('aria-cat'))
     })
+})
+
+// Listener para ocultar la seccion mis votos
+containerMisVotos.addEventListener('mouseleave', () => {
+    containerMisVotos.classList.add('translate-x-full')
+})
+
+// Listener para mostrar las seccion mis votos
+btnMisVotos.addEventListener('click', () => {
+    votos.render()
+    containerMisVotos.classList.toggle('translate-x-full')
 })
 
 // Función votar por pelicula y registrarla en mis votos.
